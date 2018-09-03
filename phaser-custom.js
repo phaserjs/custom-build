@@ -20,10 +20,13 @@ var Phaser = {
        Creators: {
            Graphics: require('gameobjects/graphics/GraphicsCreator')
        }
+   },
+   Math: {
+        Between: require('math/Between')
    }
 };
 
-//   Merge in the consts
+//  Merge in the consts
 
 Phaser = Extend(false, Phaser, CONST);
 

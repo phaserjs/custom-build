@@ -17473,10 +17473,13 @@ var Phaser = {
        Creators: {
            Graphics: __webpack_require__(307)
        }
+   },
+   Math: {
+        Between: __webpack_require__(308)
    }
 };
 
-//   Merge in the consts
+//  Merge in the consts
 
 Phaser = Extend(false, Phaser, CONST);
 
@@ -55706,6 +55709,35 @@ GameObjectCreator.register('graphics', function (config, addToScene)
 });
 
 //  When registering a factory function 'this' refers to the GameObjectCreator context.
+
+
+/***/ }),
+/* 308 */
+/***/ (function(module, exports) {
+
+/**
+ * @author       Richard Davey <rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+/**
+ * Compute a random integer between the `min` and `max` values, inclusive.
+ *
+ * @function Phaser.Math.Between
+ * @since 3.0.0
+ *
+ * @param {integer} min - The minimum value.
+ * @param {integer} max - The maximum value.
+ *
+ * @return {integer} The random integer.
+ */
+var Between = function (min, max)
+{
+    return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+module.exports = Between;
 
 
 /***/ })
