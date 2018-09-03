@@ -11,8 +11,8 @@ module.exports = {
    mode: 'production',
 
    entry: {
-       'phaser-custom': `./phaser-custom.js`,
-       'phaser-custom.min': './phaser-custom.js'
+       'phaser-custom-sprite': `./phaser-custom-sprite.js`,
+       'phaser-custom-sprite.min': './phaser-custom-sprite.js'
    },
 
    resolve: {
