@@ -2,4 +2,4 @@
 
 This project can be used as the basis for a custom build of Phaser 3.
 
-Please see the tutorial in issue 127 of the Phaser World newsletter for full details.
+Please see the tutorial in [issue 127](https://madmimi.com/p/ffcfbc) of the Phaser World newsletter for full details.
