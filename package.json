@@ -9,7 +9,9 @@
     "buildsprite": "webpack --config webpack.config-sprite.js --display-modules",
     "buildspritelog": "webpack --config webpack.config-sprite.js --json --profile > webpack.build-sprite-log.json",
     "buildboth": "webpack --config webpack.config-both.js --display-modules",
-    "buildbothlog": "webpack --config webpack.config-both.js --json --profile > webpack.build-both-log.json"
+    "buildbothlog": "webpack --config webpack.config-both.js --json --profile > webpack.build-both-log.json",
+    "buildspritesmall": "webpack --config webpack.config-sprite-small-loader.js --display-modules",
+    "buildspritesmalllog": "webpack --config webpack.config-sprite-small-loader.js --json --profile > webpack.build-sprite-small-loader-log.json"
   },
   "repository": {
     "type": "git",
