@@ -1106,191 +1106,8 @@ module.exports = CONST;
 
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-/**
- * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2018 Photon Storm Ltd.
- * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
- */
-
-//  Contains the plugins that Phaser uses globally and locally.
-//  These are the source objects, not instantiated.
-var corePlugins = {};
-
-//  Contains the plugins that the dev has loaded into their game
-//  These are the source objects, not instantiated.
-var customPlugins = {};
-
-/**
- * @typedef {object} CorePluginContainer
- *
- * @property {string} key - The unique name of this plugin in the core plugin cache.
- * @property {function} plugin - The plugin to be stored. Should be the source object, not instantiated.
- * @property {string} [mapping] - If this plugin is to be injected into the Scene Systems, this is the property key map used.
- * @property {boolean} [custom=false] - Core Scene plugin or a Custom Scene plugin?
- */
-
-/**
- * @typedef {object} CustomPluginContainer
- *
- * @property {string} key - The unique name of this plugin in the custom plugin cache.
- * @property {function} plugin - The plugin to be stored. Should be the source object, not instantiated.
- */
-
-var PluginCache = {};
-
-/**
- * Static method called directly by the Core internal Plugins.
- * Key is a reference used to get the plugin from the plugins object (i.e. InputPlugin)
- * Plugin is the object to instantiate to create the plugin
- * Mapping is what the plugin is injected into the Scene.Systems as (i.e. input)
- *
- * @method Phaser.Plugins.PluginCache.register
- * @since 3.8.0
- * 
- * @param {string} key - A reference used to get this plugin from the plugin cache.
- * @param {function} plugin - The plugin to be stored. Should be the core object, not instantiated.
- * @param {string} mapping - If this plugin is to be injected into the Scene Systems, this is the property key map used.
- * @param {boolean} [custom=false] - Core Scene plugin or a Custom Scene plugin?
- */
-PluginCache.register = function (key, plugin, mapping, custom)
-{
-    if (custom === undefined) { custom = false; }
-
-    corePlugins[key] = { plugin: plugin, mapping: mapping, custom: custom };
-};
-
-/**
- * Stores a custom plugin in the global plugin cache.
- * The key must be unique, within the scope of the cache.
- *
- * @method Phaser.Plugins.PluginCache.registerCustom
- * @since 3.8.0
- * 
- * @param {string} key - A reference used to get this plugin from the plugin cache.
- * @param {function} plugin - The plugin to be stored. Should be the core object, not instantiated.
- * @param {string} mapping - If this plugin is to be injected into the Scene Systems, this is the property key map used.
- */
-PluginCache.registerCustom = function (key, plugin, mapping)
-{
-    customPlugins[key] = { plugin: plugin, mapping: mapping };
-};
-
-/**
- * Checks if the given key is already being used in the core plugin cache.
- *
- * @method Phaser.Plugins.PluginCache.hasCore
- * @since 3.8.0
- * 
- * @param {string} key - The key to check for.
- *
- * @return {boolean} `true` if the key is already in use in the core cache, otherwise `false`.
- */
-PluginCache.hasCore = function (key)
-{
-    return corePlugins.hasOwnProperty(key);
-};
-
-/**
- * Checks if the given key is already being used in the custom plugin cache.
- *
- * @method Phaser.Plugins.PluginCache.hasCustom
- * @since 3.8.0
- * 
- * @param {string} key - The key to check for.
- *
- * @return {boolean} `true` if the key is already in use in the custom cache, otherwise `false`.
- */
-PluginCache.hasCustom = function (key)
-{
-    return customPlugins.hasOwnProperty(key);
-};
-
-/**
- * Returns the core plugin object from the cache based on the given key.
- *
- * @method Phaser.Plugins.PluginCache.getCore
- * @since 3.8.0
- * 
- * @param {string} key - The key of the core plugin to get.
- *
- * @return {CorePluginContainer} The core plugin object.
- */
-PluginCache.getCore = function (key)
-{
-    return corePlugins[key];
-};
-
-/**
- * Returns the custom plugin object from the cache based on the given key.
- *
- * @method Phaser.Plugins.PluginCache.getCustom
- * @since 3.8.0
- * 
- * @param {string} key - The key of the custom plugin to get.
- *
- * @return {CustomPluginContainer} The custom plugin object.
- */
-PluginCache.getCustom = function (key)
-{
-    return customPlugins[key];
-};
-
-/**
- * Returns an object from the custom cache based on the given key that can be instantiated.
- *
- * @method Phaser.Plugins.PluginCache.getCustomClass
- * @since 3.8.0
- * 
- * @param {string} key - The key of the custom plugin to get.
- *
- * @return {function} The custom plugin object.
- */
-PluginCache.getCustomClass = function (key)
-{
-    return (customPlugins.hasOwnProperty(key)) ? customPlugins[key].plugin : null;
-};
-
-/**
- * Removes a core plugin based on the given key.
- *
- * @method Phaser.Plugins.PluginCache.remove
- * @since 3.8.0
- * 
- * @param {string} key - The key of the core plugin to remove.
- */
-PluginCache.remove = function (key)
-{
-    if (corePlugins.hasOwnProperty(key))
-    {
-        delete corePlugins[key];
-    }
-};
-
-/**
- * Removes a custom plugin based on the given key.
- *
- * @method Phaser.Plugins.PluginCache.removeCustom
- * @since 3.8.0
- * 
- * @param {string} key - The key of the custom plugin to remove.
- */
-PluginCache.removeCustom = function (key)
-{
-    if (customPlugins.hasOwnProperty(key))
-    {
-        delete customPlugins[key];
-    }
-};
-
-module.exports = PluginCache;
-
-
-/***/ }),
-/* 10 */,
-/* 11 */
+/* 9 */,
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1872,7 +1689,7 @@ module.exports = Vector2;
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -2133,7 +1950,7 @@ module.exports = CanvasPool();
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports) {
 
 /**
@@ -2182,8 +1999,8 @@ module.exports = SafeRange;
 
 
 /***/ }),
-/* 14 */,
-/* 15 */
+/* 13 */,
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -2261,6 +2078,189 @@ var Point = new Class({
 });
 
 module.exports = Point;
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+/**
+ * @author       Richard Davey <rich@photonstorm.com>
+ * @copyright    2018 Photon Storm Ltd.
+ * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ */
+
+//  Contains the plugins that Phaser uses globally and locally.
+//  These are the source objects, not instantiated.
+var corePlugins = {};
+
+//  Contains the plugins that the dev has loaded into their game
+//  These are the source objects, not instantiated.
+var customPlugins = {};
+
+/**
+ * @typedef {object} CorePluginContainer
+ *
+ * @property {string} key - The unique name of this plugin in the core plugin cache.
+ * @property {function} plugin - The plugin to be stored. Should be the source object, not instantiated.
+ * @property {string} [mapping] - If this plugin is to be injected into the Scene Systems, this is the property key map used.
+ * @property {boolean} [custom=false] - Core Scene plugin or a Custom Scene plugin?
+ */
+
+/**
+ * @typedef {object} CustomPluginContainer
+ *
+ * @property {string} key - The unique name of this plugin in the custom plugin cache.
+ * @property {function} plugin - The plugin to be stored. Should be the source object, not instantiated.
+ */
+
+var PluginCache = {};
+
+/**
+ * Static method called directly by the Core internal Plugins.
+ * Key is a reference used to get the plugin from the plugins object (i.e. InputPlugin)
+ * Plugin is the object to instantiate to create the plugin
+ * Mapping is what the plugin is injected into the Scene.Systems as (i.e. input)
+ *
+ * @method Phaser.Plugins.PluginCache.register
+ * @since 3.8.0
+ * 
+ * @param {string} key - A reference used to get this plugin from the plugin cache.
+ * @param {function} plugin - The plugin to be stored. Should be the core object, not instantiated.
+ * @param {string} mapping - If this plugin is to be injected into the Scene Systems, this is the property key map used.
+ * @param {boolean} [custom=false] - Core Scene plugin or a Custom Scene plugin?
+ */
+PluginCache.register = function (key, plugin, mapping, custom)
+{
+    if (custom === undefined) { custom = false; }
+
+    corePlugins[key] = { plugin: plugin, mapping: mapping, custom: custom };
+};
+
+/**
+ * Stores a custom plugin in the global plugin cache.
+ * The key must be unique, within the scope of the cache.
+ *
+ * @method Phaser.Plugins.PluginCache.registerCustom
+ * @since 3.8.0
+ * 
+ * @param {string} key - A reference used to get this plugin from the plugin cache.
+ * @param {function} plugin - The plugin to be stored. Should be the core object, not instantiated.
+ * @param {string} mapping - If this plugin is to be injected into the Scene Systems, this is the property key map used.
+ */
+PluginCache.registerCustom = function (key, plugin, mapping)
+{
+    customPlugins[key] = { plugin: plugin, mapping: mapping };
+};
+
+/**
+ * Checks if the given key is already being used in the core plugin cache.
+ *
+ * @method Phaser.Plugins.PluginCache.hasCore
+ * @since 3.8.0
+ * 
+ * @param {string} key - The key to check for.
+ *
+ * @return {boolean} `true` if the key is already in use in the core cache, otherwise `false`.
+ */
+PluginCache.hasCore = function (key)
+{
+    return corePlugins.hasOwnProperty(key);
+};
+
+/**
+ * Checks if the given key is already being used in the custom plugin cache.
+ *
+ * @method Phaser.Plugins.PluginCache.hasCustom
+ * @since 3.8.0
+ * 
+ * @param {string} key - The key to check for.
+ *
+ * @return {boolean} `true` if the key is already in use in the custom cache, otherwise `false`.
+ */
+PluginCache.hasCustom = function (key)
+{
+    return customPlugins.hasOwnProperty(key);
+};
+
+/**
+ * Returns the core plugin object from the cache based on the given key.
+ *
+ * @method Phaser.Plugins.PluginCache.getCore
+ * @since 3.8.0
+ * 
+ * @param {string} key - The key of the core plugin to get.
+ *
+ * @return {CorePluginContainer} The core plugin object.
+ */
+PluginCache.getCore = function (key)
+{
+    return corePlugins[key];
+};
+
+/**
+ * Returns the custom plugin object from the cache based on the given key.
+ *
+ * @method Phaser.Plugins.PluginCache.getCustom
+ * @since 3.8.0
+ * 
+ * @param {string} key - The key of the custom plugin to get.
+ *
+ * @return {CustomPluginContainer} The custom plugin object.
+ */
+PluginCache.getCustom = function (key)
+{
+    return customPlugins[key];
+};
+
+/**
+ * Returns an object from the custom cache based on the given key that can be instantiated.
+ *
+ * @method Phaser.Plugins.PluginCache.getCustomClass
+ * @since 3.8.0
+ * 
+ * @param {string} key - The key of the custom plugin to get.
+ *
+ * @return {function} The custom plugin object.
+ */
+PluginCache.getCustomClass = function (key)
+{
+    return (customPlugins.hasOwnProperty(key)) ? customPlugins[key].plugin : null;
+};
+
+/**
+ * Removes a core plugin based on the given key.
+ *
+ * @method Phaser.Plugins.PluginCache.remove
+ * @since 3.8.0
+ * 
+ * @param {string} key - The key of the core plugin to remove.
+ */
+PluginCache.remove = function (key)
+{
+    if (corePlugins.hasOwnProperty(key))
+    {
+        delete corePlugins[key];
+    }
+};
+
+/**
+ * Removes a custom plugin based on the given key.
+ *
+ * @method Phaser.Plugins.PluginCache.removeCustom
+ * @since 3.8.0
+ * 
+ * @param {string} key - The key of the custom plugin to remove.
+ */
+PluginCache.removeCustom = function (key)
+{
+    if (customPlugins.hasOwnProperty(key))
+    {
+        delete customPlugins[key];
+    }
+};
+
+module.exports = PluginCache;
 
 
 /***/ }),
@@ -5566,7 +5566,7 @@ module.exports = Rectangle;
 
 var OS = __webpack_require__(20);
 var Browser = __webpack_require__(24);
-var CanvasPool = __webpack_require__(12);
+var CanvasPool = __webpack_require__(11);
 
 /**
  * Determines the features of the browser running this Phaser Game instance.
@@ -7953,7 +7953,7 @@ var Linear = __webpack_require__(134);
 var Rectangle = __webpack_require__(29);
 var TransformMatrix = __webpack_require__(16);
 var ValueToColor = __webpack_require__(51);
-var Vector2 = __webpack_require__(11);
+var Vector2 = __webpack_require__(10);
 
 /**
  * @typedef {object} JSONCameraBounds
@@ -10080,7 +10080,7 @@ module.exports = Camera;
  */
 
 var Class = __webpack_require__(0);
-var PluginCache = __webpack_require__(9);
+var PluginCache = __webpack_require__(15);
 
 /**
  * @classdesc
@@ -10239,7 +10239,7 @@ module.exports = GameObjectCreator;
  */
 
 var Class = __webpack_require__(0);
-var PluginCache = __webpack_require__(9);
+var PluginCache = __webpack_require__(15);
 
 /**
  * @classdesc
@@ -10634,7 +10634,7 @@ module.exports = Contains;
  */
 
 var Perimeter = __webpack_require__(50);
-var Point = __webpack_require__(15);
+var Point = __webpack_require__(14);
 
 /**
  * Position is a value between 0 and 1 where 0 = the top-left of the rectangle and 0.5 = the bottom right.
@@ -11547,7 +11547,7 @@ module.exports = DefaultPlugins;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var CanvasPool = __webpack_require__(12);
+var CanvasPool = __webpack_require__(11);
 
 /**
  * Determines the canvas features of the browser running this Phaser Game instance.
@@ -17083,7 +17083,7 @@ module.exports = Flash;
 
 var Clamp = __webpack_require__(7);
 var Class = __webpack_require__(0);
-var Vector2 = __webpack_require__(11);
+var Vector2 = __webpack_require__(10);
 var EaseMap = __webpack_require__(47);
 
 /**
@@ -18857,7 +18857,7 @@ module.exports = Stepped;
 
 var Clamp = __webpack_require__(7);
 var Class = __webpack_require__(0);
-var Vector2 = __webpack_require__(11);
+var Vector2 = __webpack_require__(10);
 
 /**
  * @classdesc
@@ -19602,7 +19602,7 @@ var Class = __webpack_require__(0);
 var GetPoint = __webpack_require__(137);
 var GetPoints = __webpack_require__(138);
 var Random = __webpack_require__(140);
-var Vector2 = __webpack_require__(11);
+var Vector2 = __webpack_require__(10);
 
 /**
  * @classdesc
@@ -19923,7 +19923,7 @@ module.exports = Line;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var Point = __webpack_require__(15);
+var Point = __webpack_require__(14);
 
 /**
  * Get a point on a line that's a given percentage along its length.
@@ -19963,7 +19963,7 @@ module.exports = GetPoint;
  */
 
 var Length = __webpack_require__(139);
-var Point = __webpack_require__(15);
+var Point = __webpack_require__(14);
 
 /**
  * Get a number of points along a line's length.
@@ -20055,7 +20055,7 @@ module.exports = Length;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var Point = __webpack_require__(15);
+var Point = __webpack_require__(14);
 
 /**
  * Returns a random point on a given Line.
@@ -20095,7 +20095,7 @@ module.exports = Random;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var Point = __webpack_require__(15);
+var Point = __webpack_require__(14);
 
 /**
  * [description]
@@ -20407,7 +20407,7 @@ module.exports = RGBStringToColor;
 var Camera = __webpack_require__(41);
 var Class = __webpack_require__(0);
 var GetFastValue = __webpack_require__(1);
-var PluginCache = __webpack_require__(9);
+var PluginCache = __webpack_require__(15);
 var RectangleContains = __webpack_require__(48);
 
 /**
@@ -21103,186 +21103,310 @@ module.exports = CameraManager;
 
 /***/ }),
 /* 150 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-/**
- * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2018 Photon Storm Ltd.
- * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
- */
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-var Class = __webpack_require__(0);
-var EE = __webpack_require__(3);
-var PluginCache = __webpack_require__(9);
+function EventEmitter() {
+  this._events = this._events || {};
+  this._maxListeners = this._maxListeners || undefined;
+}
+module.exports = EventEmitter;
 
-/**
- * @classdesc
- * EventEmitter is a Scene Systems plugin compatible version of eventemitter3.
- *
- * @class EventEmitter
- * @memberOf Phaser.Events
- * @constructor
- * @since 3.0.0
- */
-var EventEmitter = new Class({
+// Backwards-compat with node 0.10.x
+EventEmitter.EventEmitter = EventEmitter;
 
-    Extends: EE,
+EventEmitter.prototype._events = undefined;
+EventEmitter.prototype._maxListeners = undefined;
 
-    initialize:
+// By default EventEmitters will print a warning if more than 10 listeners are
+// added to it. This is a useful default which helps finding memory leaks.
+EventEmitter.defaultMaxListeners = 10;
 
-    function EventEmitter ()
-    {
-        EE.call(this);
-    },
+// Obviously not all Emitters should be limited to 10. This function allows
+// that to be increased. Set to zero for unlimited.
+EventEmitter.prototype.setMaxListeners = function(n) {
+  if (!isNumber(n) || n < 0 || isNaN(n))
+    throw TypeError('n must be a positive number');
+  this._maxListeners = n;
+  return this;
+};
 
-    /**
-     * Removes all listeners.
-     *
-     * @method Phaser.Events.EventEmitter#shutdown
-     * @since 3.0.0
-     */
-    shutdown: function ()
-    {
-        this.removeAllListeners();
-    },
+EventEmitter.prototype.emit = function(type) {
+  var er, handler, len, args, i, listeners;
 
-    /**
-     * Removes all listeners.
-     *
-     * @method Phaser.Events.EventEmitter#destroy
-     * @since 3.0.0
-     */
-    destroy: function ()
-    {
-        this.removeAllListeners();
+  if (!this._events)
+    this._events = {};
+
+  // If there is no 'error' event listener then throw.
+  if (type === 'error') {
+    if (!this._events.error ||
+        (isObject(this._events.error) && !this._events.error.length)) {
+      er = arguments[1];
+      if (er instanceof Error) {
+        throw er; // Unhandled 'error' event
+      } else {
+        // At least give some kind of context to the user
+        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
+        err.context = er;
+        throw err;
+      }
+    }
+  }
+
+  handler = this._events[type];
+
+  if (isUndefined(handler))
+    return false;
+
+  if (isFunction(handler)) {
+    switch (arguments.length) {
+      // fast cases
+      case 1:
+        handler.call(this);
+        break;
+      case 2:
+        handler.call(this, arguments[1]);
+        break;
+      case 3:
+        handler.call(this, arguments[1], arguments[2]);
+        break;
+      // slower
+      default:
+        args = Array.prototype.slice.call(arguments, 1);
+        handler.apply(this, args);
+    }
+  } else if (isObject(handler)) {
+    args = Array.prototype.slice.call(arguments, 1);
+    listeners = handler.slice();
+    len = listeners.length;
+    for (i = 0; i < len; i++)
+      listeners[i].apply(this, args);
+  }
+
+  return true;
+};
+
+EventEmitter.prototype.addListener = function(type, listener) {
+  var m;
+
+  if (!isFunction(listener))
+    throw TypeError('listener must be a function');
+
+  if (!this._events)
+    this._events = {};
+
+  // To avoid recursion in the case that type === "newListener"! Before
+  // adding it to the listeners, first emit "newListener".
+  if (this._events.newListener)
+    this.emit('newListener', type,
+              isFunction(listener.listener) ?
+              listener.listener : listener);
+
+  if (!this._events[type])
+    // Optimize the case of one listener. Don't need the extra array object.
+    this._events[type] = listener;
+  else if (isObject(this._events[type]))
+    // If we've already got an array, just append.
+    this._events[type].push(listener);
+  else
+    // Adding the second element, need to change to array.
+    this._events[type] = [this._events[type], listener];
+
+  // Check for listener leak
+  if (isObject(this._events[type]) && !this._events[type].warned) {
+    if (!isUndefined(this._maxListeners)) {
+      m = this._maxListeners;
+    } else {
+      m = EventEmitter.defaultMaxListeners;
     }
 
-});
+    if (m && m > 0 && this._events[type].length > m) {
+      this._events[type].warned = true;
+      console.error('(node) warning: possible EventEmitter memory ' +
+                    'leak detected. %d listeners added. ' +
+                    'Use emitter.setMaxListeners() to increase limit.',
+                    this._events[type].length);
+      if (typeof console.trace === 'function') {
+        // not supported in IE 10
+        console.trace();
+      }
+    }
+  }
 
-/**
- * Return an array listing the events for which the emitter has registered listeners.
- *
- * @method Phaser.Events.EventEmitter#eventNames
- * @since 3.0.0
- *
- * @return {array}
- */
+  return this;
+};
 
-/**
- * Return the listeners registered for a given event.
- *
- * @method Phaser.Events.EventEmitter#listeners
- * @since 3.0.0
- *
- * @param {(string|symbol)} event - The event name.
- *
- * @return {array} The registered listeners.
- */
+EventEmitter.prototype.on = EventEmitter.prototype.addListener;
 
-/**
- * Return the number of listeners listening to a given event.
- *
- * @method Phaser.Events.EventEmitter#listenerCount
- * @since 3.0.0
- *
- * @param {(string|symbol)} event - The event name.
- *
- * @return {number} The number of listeners.
- */
+EventEmitter.prototype.once = function(type, listener) {
+  if (!isFunction(listener))
+    throw TypeError('listener must be a function');
 
-/**
- * Calls each of the listeners registered for a given event.
- *
- * @method Phaser.Events.EventEmitter#emit
- * @since 3.0.0
- *
- * @param {(string|symbol)} event - The event name.
- * @param {...*} [args] - Additional arguments that will be passed to the event handler.
- *
- * @return {boolean} `true` if the event had listeners, else `false`.
- */
+  var fired = false;
 
-/**
- * Add a listener for a given event.
- *
- * @method Phaser.Events.EventEmitter#on
- * @since 3.0.0
- *
- * @param {(string|symbol)} event - The event name.
- * @param {function} fn - The listener function.
- * @param {*} [context=this] - The context to invoke the listener with.
- *
- * @return {Phaser.Events.EventEmitter} `this`.
- */
+  function g() {
+    this.removeListener(type, g);
 
-/**
- * Add a listener for a given event.
- *
- * @method Phaser.Events.EventEmitter#addListener
- * @since 3.0.0
- *
- * @param {(string|symbol)} event - The event name.
- * @param {function} fn - The listener function.
- * @param {*} [context=this] - The context to invoke the listener with.
- *
- * @return {Phaser.Events.EventEmitter} `this`.
- */
+    if (!fired) {
+      fired = true;
+      listener.apply(this, arguments);
+    }
+  }
 
-/**
- * Add a one-time listener for a given event.
- *
- * @method Phaser.Events.EventEmitter#once
- * @since 3.0.0
- *
- * @param {(string|symbol)} event - The event name.
- * @param {function} fn - The listener function.
- * @param {*} [context=this] - The context to invoke the listener with.
- *
- * @return {Phaser.Events.EventEmitter} `this`.
- */
+  g.listener = listener;
+  this.on(type, g);
 
-/**
- * Remove the listeners of a given event.
- *
- * @method Phaser.Events.EventEmitter#removeListener
- * @since 3.0.0
- *
- * @param {(string|symbol)} event - The event name.
- * @param {function} fn - Only remove the listeners that match this function.
- * @param {*} context - Only remove the listeners that have this context.
- * @param {boolean} once - Only remove one-time listeners.
- *
- * @return {Phaser.Events.EventEmitter} `this`.
- */
+  return this;
+};
 
-/**
- * Remove the listeners of a given event.
- *
- * @method Phaser.Events.EventEmitter#off
- * @since 3.0.0
- *
- * @param {(string|symbol)} event - The event name.
- * @param {function} fn - Only remove the listeners that match this function.
- * @param {*} context - Only remove the listeners that have this context.
- * @param {boolean} once - Only remove one-time listeners.
- *
- * @return {Phaser.Events.EventEmitter} `this`.
- */
+// emits a 'removeListener' event iff the listener was removed
+EventEmitter.prototype.removeListener = function(type, listener) {
+  var list, position, length, i;
 
-/**
- * Remove all listeners, or those of the specified event.
- *
- * @method Phaser.Events.EventEmitter#removeAllListeners
- * @since 3.0.0
- *
- * @param {(string|symbol)} [event] - The event name.
- *
- * @return {Phaser.Events.EventEmitter} `this`.
- */
+  if (!isFunction(listener))
+    throw TypeError('listener must be a function');
 
-PluginCache.register('EventEmitter', EventEmitter, 'events');
+  if (!this._events || !this._events[type])
+    return this;
 
-module.exports = EventEmitter;
+  list = this._events[type];
+  length = list.length;
+  position = -1;
+
+  if (list === listener ||
+      (isFunction(list.listener) && list.listener === listener)) {
+    delete this._events[type];
+    if (this._events.removeListener)
+      this.emit('removeListener', type, listener);
+
+  } else if (isObject(list)) {
+    for (i = length; i-- > 0;) {
+      if (list[i] === listener ||
+          (list[i].listener && list[i].listener === listener)) {
+        position = i;
+        break;
+      }
+    }
+
+    if (position < 0)
+      return this;
+
+    if (list.length === 1) {
+      list.length = 0;
+      delete this._events[type];
+    } else {
+      list.splice(position, 1);
+    }
+
+    if (this._events.removeListener)
+      this.emit('removeListener', type, listener);
+  }
+
+  return this;
+};
+
+EventEmitter.prototype.removeAllListeners = function(type) {
+  var key, listeners;
+
+  if (!this._events)
+    return this;
+
+  // not listening for removeListener, no need to emit
+  if (!this._events.removeListener) {
+    if (arguments.length === 0)
+      this._events = {};
+    else if (this._events[type])
+      delete this._events[type];
+    return this;
+  }
+
+  // emit removeListener for all listeners on all events
+  if (arguments.length === 0) {
+    for (key in this._events) {
+      if (key === 'removeListener') continue;
+      this.removeAllListeners(key);
+    }
+    this.removeAllListeners('removeListener');
+    this._events = {};
+    return this;
+  }
+
+  listeners = this._events[type];
+
+  if (isFunction(listeners)) {
+    this.removeListener(type, listeners);
+  } else if (listeners) {
+    // LIFO order
+    while (listeners.length)
+      this.removeListener(type, listeners[listeners.length - 1]);
+  }
+  delete this._events[type];
+
+  return this;
+};
+
+EventEmitter.prototype.listeners = function(type) {
+  var ret;
+  if (!this._events || !this._events[type])
+    ret = [];
+  else if (isFunction(this._events[type]))
+    ret = [this._events[type]];
+  else
+    ret = this._events[type].slice();
+  return ret;
+};
+
+EventEmitter.prototype.listenerCount = function(type) {
+  if (this._events) {
+    var evlistener = this._events[type];
+
+    if (isFunction(evlistener))
+      return 1;
+    else if (evlistener)
+      return evlistener.length;
+  }
+  return 0;
+};
+
+EventEmitter.listenerCount = function(emitter, type) {
+  return emitter.listenerCount(type);
+};
+
+function isFunction(arg) {
+  return typeof arg === 'function';
+}
+
+function isNumber(arg) {
+  return typeof arg === 'number';
+}
+
+function isObject(arg) {
+  return typeof arg === 'object' && arg !== null;
+}
+
+function isUndefined(arg) {
+  return arg === void 0;
+}
 
 
 /***/ }),
@@ -21298,7 +21422,7 @@ module.exports = EventEmitter;
 var AddToDOM = __webpack_require__(152);
 var AnimationManager = __webpack_require__(153);
 var CacheManager = __webpack_require__(156);
-var CanvasPool = __webpack_require__(12);
+var CanvasPool = __webpack_require__(11);
 var Class = __webpack_require__(0);
 var Config = __webpack_require__(158);
 var CreateRenderer = __webpack_require__(159);
@@ -24704,7 +24828,7 @@ module.exports = Config;
  */
 
 var CanvasInterpolation = __webpack_require__(160);
-var CanvasPool = __webpack_require__(12);
+var CanvasPool = __webpack_require__(11);
 var CONST = __webpack_require__(8);
 var Features = __webpack_require__(31);
 
@@ -33134,7 +33258,7 @@ module.exports = MouseManager;
 
 var Class = __webpack_require__(0);
 var SmoothStepInterpolation = __webpack_require__(191);
-var Vector2 = __webpack_require__(11);
+var Vector2 = __webpack_require__(10);
 
 
 /**
@@ -34236,7 +34360,7 @@ module.exports = TouchManager;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var Vector2 = __webpack_require__(11);
+var Vector2 = __webpack_require__(10);
 
 /**
  * Takes the `x` and `y` coordinates and transforms them into the same space as
@@ -34308,7 +34432,7 @@ var FileTypesManager = __webpack_require__(2);
 var GameObjectCreator = __webpack_require__(42);
 var GameObjectFactory = __webpack_require__(43);
 var GetFastValue = __webpack_require__(1);
-var PluginCache = __webpack_require__(9);
+var PluginCache = __webpack_require__(15);
 var Remove = __webpack_require__(62);
 
 /**
@@ -40393,7 +40517,7 @@ module.exports = WebAudioSound;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var CanvasPool = __webpack_require__(12);
+var CanvasPool = __webpack_require__(11);
 var CanvasTexture = __webpack_require__(212);
 var Class = __webpack_require__(0);
 var Color = __webpack_require__(19);
@@ -42400,7 +42524,7 @@ module.exports = Frame;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var CanvasPool = __webpack_require__(12);
+var CanvasPool = __webpack_require__(11);
 var Class = __webpack_require__(0);
 var IsSizePowerOfTwo = __webpack_require__(32);
 var ScaleModes = __webpack_require__(22);
@@ -42640,7 +42764,7 @@ module.exports = TextureSource;
  */
 
 var Arne16 = __webpack_require__(216);
-var CanvasPool = __webpack_require__(12);
+var CanvasPool = __webpack_require__(11);
 var GetValue = __webpack_require__(6);
 
 /**
@@ -44666,7 +44790,7 @@ module.exports = VisibilityHandler;
 
 var Class = __webpack_require__(0);
 var List = __webpack_require__(230);
-var PluginCache = __webpack_require__(9);
+var PluginCache = __webpack_require__(15);
 var StableSort = __webpack_require__(38);
 
 /**
@@ -45737,7 +45861,7 @@ module.exports = {
     Replace: __webpack_require__(259),
     RotateLeft: __webpack_require__(260),
     RotateRight: __webpack_require__(261),
-    SafeRange: __webpack_require__(13),
+    SafeRange: __webpack_require__(12),
     SendToBack: __webpack_require__(262),
     SetAll: __webpack_require__(263),
     Shuffle: __webpack_require__(66),
@@ -46296,7 +46420,7 @@ module.exports = BringToTop;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var SafeRange = __webpack_require__(13);
+var SafeRange = __webpack_require__(12);
 
 /**
  * Returns the total number of elements in the array which have a property matching the given value.
@@ -46394,7 +46518,7 @@ module.exports = Each;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var SafeRange = __webpack_require__(13);
+var SafeRange = __webpack_require__(12);
 
 /**
  * Passes each element in the array, between the start and end indexes, to the given callback.
@@ -46450,7 +46574,7 @@ module.exports = EachInRange;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var SafeRange = __webpack_require__(13);
+var SafeRange = __webpack_require__(12);
 
 /**
  * Returns all elements in the array.
@@ -46512,7 +46636,7 @@ module.exports = GetAll;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var SafeRange = __webpack_require__(13);
+var SafeRange = __webpack_require__(12);
 
 /**
  * Returns the first element in the array.
@@ -47216,7 +47340,7 @@ module.exports = RemoveAt;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var SafeRange = __webpack_require__(13);
+var SafeRange = __webpack_require__(12);
 
 /**
  * Removes the item within the given range in the array.
@@ -47478,7 +47602,7 @@ module.exports = SendToBack;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var SafeRange = __webpack_require__(13);
+var SafeRange = __webpack_require__(12);
 
 /**
  * Scans the array for elements with the given property. If found, the property is set to the `value`.
@@ -47582,7 +47706,7 @@ module.exports = Swap;
  */
 
 var Class = __webpack_require__(0);
-var PluginCache = __webpack_require__(9);
+var PluginCache = __webpack_require__(15);
 
 /**
  * @classdesc
@@ -51094,7 +51218,7 @@ module.exports = Flip;
 
 var Rectangle = __webpack_require__(29);
 var RotateAround = __webpack_require__(274);
-var Vector2 = __webpack_require__(11);
+var Vector2 = __webpack_require__(10);
 
 /**
  * Provides methods used for obtaining the bounds of a Game Object.
@@ -54292,7 +54416,7 @@ module.exports = Visible;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var Point = __webpack_require__(15);
+var Point = __webpack_require__(14);
 
 /**
  * Returns a Point object containing the coordinates of a point on the circumference of the Ellipse based on the given angle.
@@ -54740,7 +54864,7 @@ module.exports = Ellipse;
 var CircumferencePoint = __webpack_require__(292);
 var FromPercent = __webpack_require__(302);
 var MATH_CONST = __webpack_require__(18);
-var Point = __webpack_require__(15);
+var Point = __webpack_require__(14);
 
 /**
  * Returns a Point object containing the coordinates of a point on the circumference of the Ellipse
@@ -54900,7 +55024,7 @@ module.exports = Circumference;
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
 
-var Point = __webpack_require__(15);
+var Point = __webpack_require__(14);
 
 /**
  * Returns a uniformly distributed random point from anywhere within the given Ellipse.
