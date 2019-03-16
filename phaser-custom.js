@@ -1,9 +1,11 @@
 require('phaser/src/polyfills');
 
-const CONST = require('phaser/src/const');
-const Extend = require('phaser/src/utils/object/Extend');
+// We use "var" instead of "const" and "let" since this file will actually be included in client code.
 
-let Phaser = {
+var CONST = require('phaser/src/const');
+var Extend = require('phaser/src/utils/object/Extend');
+
+var Phaser = {
     Cameras: {
         Scene2D: require('phaser/src/cameras/2d')
     },
