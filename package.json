@@ -5,13 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --display-modules",
-    "buildlog": "webpack --json --profile > webpack.build-log.json",
-    "buildsprite": "webpack --config webpack.config-sprite.js --display-modules",
-    "buildspritelog": "webpack --config webpack.config-sprite.js --json --profile > webpack.build-sprite-log.json",
-    "buildboth": "webpack --config webpack.config-both.js --display-modules",
-    "buildbothlog": "webpack --config webpack.config-both.js --json --profile > webpack.build-both-log.json",
-    "buildspritesmall": "webpack --config webpack.config-sprite-small-loader.js --display-modules",
-    "buildspritesmalllog": "webpack --config webpack.config-sprite-small-loader.js --json --profile > webpack.build-sprite-small-loader-log.json"
+    "buildlog": "webpack --json --profile > webpack.build-log.json"
   },
   "repository": {
     "type": "git",
@@ -26,9 +20,9 @@
   "dependencies": {
     "clean-webpack-plugin": "^0.1.19",
     "eventemitter3": "^3.1.0",
-    "phaser": "^3.15.1",
+    "phaser": "^3.16.2",
     "uglifyjs-webpack-plugin": "^1.3.0",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }

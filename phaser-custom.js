@@ -1,30 +1,29 @@
-require('polyfills');
+require('phaser/src/polyfills');
 
-var CONST = require('const');
-var Extend = require('utils/object/Extend');
+var CONST = require('phaser/src/const');
+var Extend = require('phaser/src/utils/object/Extend');
 
 var Phaser = {
-
-   Cameras: {
-       Scene2D: require('cameras/2d')
-   },
-   Events: require('events/EventEmitter'),
-   Game: require('boot/Game'),
-   GameObjects: {
-       DisplayList: require('gameobjects/DisplayList'),
-       UpdateList: require('gameobjects/UpdateList'),
-       Graphics: require('gameobjects/graphics/Graphics.js'),
-       Factories: {
-           Graphics: require('gameobjects/graphics/GraphicsFactory')
-       },
-       Creators: {
-           Graphics: require('gameobjects/graphics/GraphicsCreator')
-       }
-   },
-   Math: {
-        Between: require('math/Between')
-   }
-};
+    Cameras: {
+        Scene2D: require('phaser/src/cameras/2d')
+    },
+    Events: require('phaser/src/events/EventEmitter'),
+    Game: require('phaser/src/core/Game'),
+    GameObjects: {
+        DisplayList: require('phaser/src/gameobjects/DisplayList'),
+        UpdateList: require('phaser/src/gameobjects/UpdateList'),
+        Graphics: require('phaser/src/gameobjects/graphics/Graphics.js'),
+        Factories: {
+            Graphics: require('phaser/src/gameobjects/graphics/GraphicsFactory')
+        },
+        Creators: {
+            Graphics: require('phaser/src/gameobjects/graphics/GraphicsCreator')
+        }
+    },
+    Math: {
+        Between: require('phaser/src/math/Between')
+    }
+}
 
 //  Merge in the consts
 

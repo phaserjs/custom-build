@@ -19,7 +19,7 @@ module.exports = {
        alias: {
            'eventemitter3': path.resolve(__dirname, './node_modules/eventemitter3')
        },
-       modules: [ 'node_modules/phaser/src' ]
+       //modules: [ 'node_modules/phaser/src' ]
    },
 
    output: {
