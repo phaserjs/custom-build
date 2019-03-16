@@ -11,19 +11,19 @@ module.exports = {
     mode: 'production',
 
     entry: {
-        'phaser-custom': `./phaser-custom.js`,
-        'phaser-custom.min': './phaser-custom.js'
+        'phaser-custom': path.join(__dirname, `./phaser-custom.js`),
+        'phaser-custom.min': path.join(__dirname, './phaser-custom.js')
     },
 
     resolve: {
-        alias: {
+        // Not 100% sure of removing this since I cannot find a reason why this was initially added.
+        /*alias: {
             'eventemitter3': path.resolve(__dirname, './node_modules/eventemitter3')
-        },
-        //modules: [ 'node_modules/phaser/src' ]
+        },*/
     },
 
     output: {
-        path: `${__dirname}/dist/`,
+        path: path.join(__dirname, './dist/'),
         filename: '[name].js',
         library: 'Phaser',
         libraryTarget: 'umd',

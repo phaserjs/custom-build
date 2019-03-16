@@ -1,9 +1,9 @@
 require('phaser/src/polyfills');
 
-var CONST = require('phaser/src/const');
-var Extend = require('phaser/src/utils/object/Extend');
+const CONST = require('phaser/src/const');
+const Extend = require('phaser/src/utils/object/Extend');
 
-var Phaser = {
+let Phaser = {
     Cameras: {
         Scene2D: require('phaser/src/cameras/2d')
     },
@@ -26,11 +26,8 @@ var Phaser = {
 }
 
 //  Merge in the consts
-
 Phaser = Extend(false, Phaser, CONST);
 
 //  Export it
-
 module.exports = Phaser;
-
 global.Phaser = Phaser;
