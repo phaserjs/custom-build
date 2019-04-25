@@ -6,6 +6,7 @@ Thumbs.db
 *.suo
 *.sublime-project
 *.sublime-workspace
+webpack.*-log.json
 
 # Vendors
 node_modules/
