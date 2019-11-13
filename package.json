@@ -28,11 +28,11 @@
   },
   "homepage": "https://github.com/photonstorm/phaser3-custom-build#readme",
   "dependencies": {
-    "clean-webpack-plugin": "^0.1.19",
-    "eventemitter3": "^3.1.0",
-    "phaser": "^3.16.2",
-    "uglifyjs-webpack-plugin": "^1.3.0",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "clean-webpack-plugin": "^3.0.0",
+    "eventemitter3": "^4.0.0",
+    "phaser": "^3.20.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   }
 }
