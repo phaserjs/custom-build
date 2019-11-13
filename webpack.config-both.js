@@ -2,7 +2,7 @@
 
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -64,7 +64,7 @@ module.exports = {
            "typeof PLUGIN_FBINSTANT": JSON.stringify(false)
        }),
 
-       new CleanWebpackPlugin([ 'dist' ])
+       new CleanWebpackPlugin()
    ],
 
    devtool: 'source-map'
