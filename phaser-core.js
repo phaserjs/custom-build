@@ -1,7 +1,7 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
- * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+ * @copyright    2020 Photon Storm Ltd.
+ * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
 require('polyfills');
@@ -16,13 +16,15 @@ var Extend = require('utils/object/Extend');
 var Phaser = {
 
     Animations: require('animations'),
+    BlendModes: require('renderer/BlendModes'),
     Cache: require('cache'),
     Cameras: { Scene2D: require('cameras/2d') },
     Core: require('core'),
     Class: require('utils/Class'),
     Data: require('data'),
     Display: { Masks: require('display/mask') },
-    Events: require('events/EventEmitter'),
+    DOM: require('dom'),
+    Events: require('events'),
     Game: require('core/Game'),
     GameObjects: {
         DisplayList: require('gameobjects/DisplayList'),
@@ -35,17 +37,20 @@ var Phaser = {
         GameObject: require('gameobjects/GameObject'),
         Graphics: require('gameobjects/graphics/Graphics.js'),
         Image: require('gameobjects/image/Image'),
+        Layer: require('gameobjects/layer/Layer'),
         Sprite: require('gameobjects/sprite/Sprite'),
         Text: require('gameobjects/text/static/Text'),
         Factories: {
             Graphics: require('gameobjects/graphics/GraphicsFactory'),
             Image: require('gameobjects/image/ImageFactory'),
+            Layer: require('gameobjects/layer/LayerFactory'),
             Sprite: require('gameobjects/sprite/SpriteFactory'),
             Text: require('gameobjects/text/static/TextFactory')
         },
         Creators: {
             Graphics: require('gameobjects/graphics/GraphicsCreator'),
             Image: require('gameobjects/image/ImageCreator'),
+            Layer: require('gameobjects/layer/LayerCreator'),
             Sprite: require('gameobjects/sprite/SpriteCreator'),
             Text: require('gameobjects/text/static/TextCreator')
         }
@@ -86,18 +91,32 @@ var Phaser = {
     Plugins: require('plugins'),
     Renderer: require('renderer'),
     Scale: require('scale'),
+    ScaleModes: require('renderer/ScaleModes'),
     Scene: require('scene/Scene'),
     Scenes: require('scene'),
-    Sound: require('sound'),
     Structs: require('structs'),
     Textures: require('textures'),
     Time: require('time'),
     Tweens: require('tweens')
 };
 
+//   Merge in the consts//  Merge in the optional plugins and WebGL only features
+
+if (typeof FEATURE_SOUND)
+{
+    Phaser.Sound = require('sound');
+}
+
 //   Merge in the consts
 
 Phaser = Extend(false, Phaser, CONST);
+
+/**
+ * The root types namespace.
+ *
+ * @namespace Phaser.Types
+ * @since 3.17.0
+ */
 
 //  Export it
 

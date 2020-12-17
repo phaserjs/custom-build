@@ -8,7 +8,7 @@ The important thing to remember is that the Phaser module entry point, as define
 
 ## Building Phaser
 
-This guide is based on creating a custom build of Phaser 3.11. When newer versions ship, it'll change slightly, because more things will be available to bundle in, but the core concept will remain exactly the same.
+This guide is based on creating a custom build of Phaser 3.50. When newer versions ship, it'll change slightly, because more things will be available to bundle in, but the core concept will remain exactly the same.
 
 To start with I'd recommend you [clone this template repo](https://github.com/photonstorm/phaser3-custom-build). It will save a whole bunch of time getting set-up. Clone it, then `npm install` to grab the dependencies. You're now ready to do a custom build.
 
