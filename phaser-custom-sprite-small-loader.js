@@ -8,7 +8,7 @@ var Phaser = {
     Cameras: {
         Scene2D: require('cameras/2d')
     },
-    Events: require('events'),
+    Events: require('events/index'),
     Game: require('core/Game'),
     GameObjects: {
         DisplayList: require('gameobjects/DisplayList'),

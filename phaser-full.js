@@ -27,7 +27,7 @@ var Phaser = {
     Data: require('data'),
     Display: require('display'),
     DOM: require('dom'),
-    Events: require('events'),
+    Events: require('events/index'),
     Game: require('core/Game'),
     GameObjects: require('gameobjects'),
     Geom: require('geom'),

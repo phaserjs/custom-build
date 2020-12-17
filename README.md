@@ -1,6 +1,6 @@
 # Creating Custom Phaser 3 Builds
 
-By default, Phaser will include pretty much everything, especially if you just require or import the main entry point. This will add 770KB of minified JavaScript to your bundle which is a considerable amount, especially if you aren't even using a large chunk of it. However, you can choose what you actually need in your bundle to a very granular degree. It just takes a little configuration to do it.
+By default, Phaser will include pretty much everything, especially if you just require or import the main entry point. This will add 980KB of minified JavaScript to your bundle which is a considerable amount, especially if you aren't even using a large chunk of it. However, you can choose what you actually need in your bundle to a very granular degree. It just takes a little configuration to do it.
 
 To create custom builds you're going to need [webpack](https://webpack.js.org/). If you've no experience with webpack it'd be best to go and learn how it works before carrying on, as Phaser is built specifically with it. Other bundlers, like Parcel, may also work but it's up to you to translate this guide into their respective formats.
 
@@ -30,7 +30,7 @@ The `GraphicsFactory` function is what allows you to use the command `this.add.g
 
 In the `test/index.html` file you'll see the code for our demo. All it does is create an 800 x 600 game instance and then renders the Star Wars logo to the Graphics object. It's not exactly a game but it demonstrates that, fundamentally, everything is working.
 
-If you look in the `dist` folder you'll see that the `phaser-custom` file is 274 KB minified, or 71 KB gzipped. So, it's _significantly_ smaller than the default build that Phaser ships with.
+If you look in the `dist` folder you'll see that the `phaser-custom` file is 404 KB minified, or 110 KB gzipped. So, it's _significantly_ smaller than the default build that Phaser ships with.
 
 ## Tweaking the Custom Build
 
@@ -42,13 +42,13 @@ If you look at the file above you'll see we've added in the Image and Sprite Gam
 
 [![image](https://cascade.madmimi.com/promotion_images/6092/7999/original/custom3.png?1535991809)]()
 
-Taa-da, working Sprites and image loading! The bundle size is now 78 KB min+gz, which is 7 KB bigger than our Graphics only bundle, but that's to be expected as we've added the whole Loader module to our build and a couple of meaty Game Objects too.
+Taa-da, working Sprites and image loading! The bundle size is now 122 KB min+gz, which is 12 KB bigger than our Graphics only bundle, but that's to be expected as we've added the whole Loader module to our build and a couple of meaty Game Objects too.
 
 Let's refine it a little bit though. We really don't need all of the file types the Loader supports. In fact, for this test, we literally only need one: the Image loader. Let's tweak our entry point so it includes only the LoaderPlugin and the Image File Type:
 
 [![image](https://cascade.madmimi.com/promotion_images/6094/9597/original/custom5.png?1536004657)]()
 
-If we re-run the build command our new minified file is 284 KB which is 19 KB less than before. It's not just about file size, though, that's less JavaScript for the browser to process when it's launching your game for the first time too.
+If we re-run the build command our new minified file is 113 KB min+gz which is 9 KB less than before. It's not just about file size, though, that's less JavaScript for the browser to process when it's launching your game for the first time too.
 
 How do you know which things to include back in the entry point? You can work it out by looking at the `phaser.js` and `phaser-core.js` files in the root src folder of the main Phaser repo. Using those, plus just browsing the source folders for yourself, you can quickly find what you need.
 
@@ -62,4 +62,4 @@ All of the modules are listed below the interactive tree. Click any node on the 
 
 As we can see, lots of modules include the entire Array Utils package. This isn't a bad thing in itself, because it's a pretty compact and widely used area of the API, but this exploration process did highlight a lot to me. If you look at the Game module you'll see it pulls in plenty of things. The Texture Manager, the Sound Manager, the Animation Manager. All the things it expects to need in order to operate. Yet, the Sound Manager is entirely optional - we could easily hide that behind a custom build flag and it'd stop including 140 KB worth of un-minified source, because if you're literally not using it, why even bother to have it in the API? The same can be said for a number of other systems, such as the Animation Manager. The Device module could be made into a much more compact version that only includes checks that Phaser needs to boot-up, too.
 
-In short, I'm quite happy that it's really easy to create a significantly smaller version of Phaser 3 with very little effort on your part. Use the custom build template and smash away parts of the API you don't need and get your games even leaner. This is especially important for Facebook Instant Games, where time-to-play needs to be as tiny as possible. Reducing your build from several hundred KB down to 70 KB certainly gets you a lot further along that path.
+In short, I'm quite happy that it's really easy to create a significantly smaller version of Phaser 3 with very little effort on your part. Use the custom build template and smash away parts of the API you don't need and get your games even leaner. This is especially important for Facebook Instant Games, where time-to-play needs to be as tiny as possible. Reducing your build from nearly 1 MB down to a few hundred KB certainly gets you a lot further along that path.
