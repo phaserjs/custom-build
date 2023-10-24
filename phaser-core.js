@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2020 Photon Storm Ltd.
+ * @copyright    2023 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -25,6 +25,7 @@ var Phaser = {
     Display: { Masks: require('display/mask') },
     DOM: require('dom'),
     Events: require('events/EventEmitter'),
+    FX: require('fx'),
     Game: require('core/Game'),
     GameObjects: {
         DisplayList: require('gameobjects/DisplayList'),
